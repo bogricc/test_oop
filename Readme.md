@@ -13,7 +13,7 @@ program to exit appropriately.
 
 Your program will be executed directly from the command line and will be provided three 
 arguments in the following order:
-`<user y coordinate> <user x coordinate> <shop data filename>`
+`<user x coordinate> <user y coordinate> <shop data filename>`
 
 ## Output
 
