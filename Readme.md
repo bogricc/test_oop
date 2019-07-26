@@ -38,4 +38,10 @@ Starbucks Seattle2,0.0645
 Starbucks Seattle,0.0861
 Starbucks SF,10.0793
 ```
+## Run the project
+
+To run this solution you have to:
+* Install PHP7
+* run `php -f index.php <user x coordinate> <user y coordinate> <shop data filename>`
+
 
