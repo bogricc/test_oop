@@ -62,7 +62,7 @@ Example:
 
 
 ### Within a Docker container
-If you have (Docker)[https://docs.docker.com/docker-for-windows/release-notes/] installed on your system
+If you have [Docker](https://docs.docker.com/docker-for-windows/release-notes/ "Docker Release Page") installed on your system
 you can run this project simply running
 ```
 docker run --rm -ti -v "$PWD"/:/app php \
