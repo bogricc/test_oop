@@ -51,14 +51,14 @@ Once PHP is installed test the project
 `php -f index.php`
 You should see the usage.
 Now run the project with a command like this
-`php -f index.php -- <user x coordinate> <user y coordinate> <shop data filename>`
+```php -f index.php -- <user x coordinate> <user y coordinate> <shop data filename>```
 
 To run all tests, please use this command:
-`php -f vendor/bin/phpunit -- --bootstrap vendor/autoload.php --testdox tests`
+```php -f vendor/bin/phpunit -- --bootstrap ./vendor/autoload.php --testdox tests```
 Where `tests` is folder where tests are defined.
 If you need to test only one test then you need to append the desired class.
 Example:
-`php -f vendor/bin/phpunit -- --bootstrap vendor/autoload.php --testdox tests/CoffeeShopDistanceTest`
+```php -f vendor/bin/phpunit -- --bootstrap ./vendor/autoload.php --testdox tests/CoffeeShopDistanceTest```
 
 
 ### Within a Docker container
