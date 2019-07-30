@@ -5,9 +5,9 @@ use PHPUnit\Framework\TestCase;
 
 final class ExpectedOutputTest extends TestCase {
     public function testCanOutputExpected(): void{
-        $expectedOutput = "Starbucks Rio De Janeiro,134.7088\n".
-        "Starbucks Sydney,136.2776\n".
-        "Starbucks Moscow,178.4328\n";
+        $expectedOutput = "Starbucks Rio De Janeiro,134.7088".PHP_EOL.
+            "Starbucks Sydney,136.2776".PHP_EOL.
+            "Starbucks Moscow,178.4328".PHP_EOL;
 
         $this->expectOutputString($expectedOutput);
 
