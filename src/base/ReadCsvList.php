@@ -15,7 +15,7 @@ class ReadCsvList{
             throw new \Exception("CsvFile $csvFile does not exist.");
         }
 
-        $csv = $this->readCsv($csvFile);
+        $csv = $this->readCsv();
         if(empty($csv)){
             throw new \Exception("Csv file contains no line");
         }
