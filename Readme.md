@@ -67,13 +67,13 @@ you can run this project simply running
 ```
 docker run --rm -ti -v "$PWD"/:/app php \
     bash -c "cd /app && \
-    php -f index.php -- <user x coordinate> <user y coordinate> <shop data filename>\
+    php -f index.php -- <user x coordinate> <user y coordinate> <shop data filename>"
 ```
 Example:
 ```
 docker run --rm -ti -v "$PWD"/:/app php \
     bash -c "cd /app && \
-    php -f index.php -- 47.6 -122.4 coffee_shops.csv
+    php -f index.php -- 47.6 -122.4 coffee_shops.csv"
 ```
 
 Running tests is similar:
