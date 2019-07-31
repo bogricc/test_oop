@@ -1,1 +1,5 @@
 *.sh
+vendor
+vendor/*
+composer.lock
+Dockerfile

@@ -38,17 +38,20 @@ Starbucks Seattle2,0.0645
 Starbucks Seattle,0.0861
 Starbucks SF,10.0793
 ```
+
 ## Run the project
 
 First clone this git or download the zip.
 All next commands are needed to run in a coomand-line or a terminal shell
 opened inside the git clone or downloaded archive unzipped.
 
-
-### With PHP locally installed
-In order to run this application you need to have PHP7 installed on your system.
+### With PHP and Composer locally installed
+In order to run this application you need to have PHP7 and Composer installed on your system.
+Installing process depends on platform. Please see this external links for [Windows](https://www.jeffgeerling.com/blog/2018/installing-php-7-and-composer-on-windows-10) and [Linux](https://linuxconfig.org/how-to-install-php-composer-on-debian-linux).
+Update dependencies running
+```composer update```
 Once PHP is installed test the project
-`php -f index.php`
+```php -f index.php```
 You should see the usage.
 Now run the project with a command like this
 ```php -f index.php -- <user x coordinate> <user y coordinate> <shop data filename>```
@@ -63,32 +66,46 @@ Example:
 
 ### Within a Docker container
 If you have [Docker](https://docs.docker.com/docker-for-windows/release-notes/ "Docker Release Page") installed on your system
-you can run this project simply running
+you can run this project after a few setup steps
+1. Create a file named Dockerfile and paste this content inside it
 ```
-docker run --rm -ti -v "$PWD"/:/app php \
-    bash -c "cd /app && \
-    php -f index.php -- <user x coordinate> <user y coordinate> <shop data filename>"
+FROM php
+COPY . /app
+WORKDIR /app
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php && \
+    php -r "unlink('composer-setup.php');" && \
+    mv composer.phar /usr/local/bin/composer
+
+RUN apt-get update && apt-get install -y git zip && \
+    composer update --no-plugins --no-scripts
+```
+2. Build the image
+```
+docker build -t coffeeshop .
+```
+3. Run the image
+Now its ready to run the project inside a container based on already built image 
+```
+docker run --rm -ti coffeeshop \
+    bash -c "php -f index.php -- <user x coordinate> <user y coordinate> <shop data filename>"
 ```
 Example:
 ```
-docker run --rm -ti -v "$PWD"/:/app php \
-    bash -c "cd /app && \
-    php -f index.php -- 47.6 -122.4 coffee_shops.csv"
+docker run --rm -ti coffeeshop \
+    bash -c "php -f index.php -- 47.6 -122.4 coffee_shops.csv"
 ```
 
 Running tests is similar:
 ```
-docker run --rm -ti -v "$PWD"/:/app php \
-    bash -c "cd /app && \
-    php -f vendor/phpunit/phpunit/phpunit -- \
+docker run --rm -ti coffeeshop \
+    bash -c "php -f vendor/phpunit/phpunit/phpunit -- \
     --bootstrap vendor/autoload.php tests" 
 ```
 or test a specified class
 ```
-docker run --rm -ti -v "$PWD"/:/app php \
-    bash -c "cd /app && \
-    php -f vendor/phpunit/phpunit/phpunit -- \
+docker run --rm -ti coffeeshop \
+    bash -c "php -f vendor/phpunit/phpunit/phpunit -- \
     --bootstrap vendor/autoload.php tests/CoffeeShopDistanceTest" 
 ```
-If tests are not working correctly or you see no output, please make sure you are placed inside of the 
-project folder.
