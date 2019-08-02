@@ -11,12 +11,12 @@ class ReadCsvList{
             $this->csvFile = $csvFile;
         }
         else{
-            throw new \Exception("CsvFile $csvFile does not exist.");
+            throw new BaseException("CsvFile $csvFile does not exist.");
         }
 
         $csv = $this->readCsv();
         if(empty($csv)){
-            throw new \Exception("Csv file contains no line");
+            throw new BaseException("Csv file contains no line");
         }
         $this->csvList = $csv;
 
@@ -31,21 +31,23 @@ class ReadCsvList{
     }
     public function setIndexes($csvHeader){
         if(is_array($csvHeader)){
-            $headerLength = count($csvHeader);
-            $all = count($this->csvList, COUNT_RECURSIVE);
-            $lvl = count($this->csvList);
-            $csvColumnsSize = ($all-$lvl) / $lvl;
-            if($headerLength != $csvColumnsSize){
-                throw new \Exception("Header size does not match to csv column size.");
+            $csvList = $this->csvList;
+            $csvHeaderSize = count($csvHeader);
+            $newCsvList = array_filter($csvList, function($el) use ($csvHeaderSize){
+                return (count($el) == $csvHeaderSize);
+            });
+
+            if(count($newCsvList) != count($csvList)){
+                throw new BaseException("Header size does not match to all csv lines.");
             }
             else{
                 $this->csvList = array_map(function($el) use ($csvHeader){
                     return array_combine($csvHeader, $el);
-                }, $this->csvList);
+                }, $csvList);
             }
         }
         else{
-            throw new \Exception("Csv Header is not an array.");
+            throw new BaseException("Csv Header is not an array.");
         }
     }
 }

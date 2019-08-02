@@ -19,6 +19,7 @@ else{
         $coffeeArrived = $coffeeOptions->getNearShops();
         CoffeeShop\PrintMyCoffee::console($coffeeArrived);
     } catch(Exception $exceptionObject){
-        echo "Error: {$exceptionObject->getMessage()}",PHP_EOL;
+        // echo "Error: {$exceptionObject->getMessage()}",PHP_EOL;
+        echo $exceptionObject, PHP_EOL;
     }
 }

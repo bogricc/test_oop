@@ -23,7 +23,7 @@ class Location implements ILocation{
             $this->__xCoord = floatval($xCoord);
         }
         else{
-            throw new \Exception("Coordinate X is not valid.");
+            throw new BaseException("Coordinate X is not valid.");
         }
         return $this;
     }
@@ -33,7 +33,7 @@ class Location implements ILocation{
             $this->__yCoord = floatval($yCoord);
         }
         else{
-            throw new \Exception("Coordinate Y is not valid.");
+            throw new BaseException("Coordinate Y is not valid.");
         }
         return $this;
     }

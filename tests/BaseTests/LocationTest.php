@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use base\Location;
+use base\BaseException;
 
 final class LocationTest extends TestCase {
 
@@ -22,12 +23,12 @@ final class LocationTest extends TestCase {
     }
 
     public function testCannotBeCreatedWithAnInvalidCoordinateX(): void{
-        $this->expectExceptionMessage("Coordinate X is not valid.");
+        $this->expectException(BaseException::class);
         new Location("", 12.2);
     }
 
     public function testCannotBeCreatedWithAnInvalidCoordinateY(): void{
-        $this->expectExceptionMessage("Coordinate Y is not valid.");
+        $this->expectException(BaseException::class);
         new Location(12.2, "");
     }
 }
