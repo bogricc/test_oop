@@ -15,10 +15,10 @@ else{
     $coordY  = $argv[2];
     $csvFile = $argv[3];
     try{
-        $v = new GetMyCoffee($coordX, $coordY, $csvFile);
-        $arr = $v->getNearShops();
-        CoffeeShop\PrintMyCoffee::console($arr);
-    } catch(Exception $ex){
-        echo "Error: {$ex->getMessage()}",PHP_EOL;
+        $coffeeOptions = new GetMyCoffee($coordX, $coordY, $csvFile);
+        $coffeeArrived = $coffeeOptions->getNearShops();
+        CoffeeShop\PrintMyCoffee::console($coffeeArrived);
+    } catch(Exception $exceptionObject){
+        echo "Error: {$exceptionObject->getMessage()}",PHP_EOL;
     }
 }

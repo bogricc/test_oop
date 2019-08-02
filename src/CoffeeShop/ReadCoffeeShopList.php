@@ -10,8 +10,7 @@ class ReadCoffeeShopList extends ReadCsvList{
         'CoordinateX',
     ];
 
-    public function __construct($csvFile)
-    {
+    public function __construct($csvFile) {
         parent::__construct($csvFile, $this->csvHeader);
     }
 
@@ -19,7 +18,7 @@ class ReadCoffeeShopList extends ReadCsvList{
         $list = [];
 
         $list = array_map(function($item){
-            return new CoffeeShopDistance($item['CoordinateX'], $item['CoordinateY'], $item['ShopName']);
+            return new CoffeeShopWithDistance($item['CoordinateX'], $item['CoordinateY'], $item['ShopName']);
         }, $this->csvList);
 
         return $list;

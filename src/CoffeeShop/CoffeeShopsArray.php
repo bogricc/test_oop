@@ -19,6 +19,4 @@ class CoffeeShopsArray extends \ArrayObject{
         $newList = array_filter($list, $filterCB);
         return $newList;
     }
-
-
 }

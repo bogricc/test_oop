@@ -41,5 +41,4 @@ class Location implements ILocation{
     public function validateCoordinate($val) : bool{
         return (($val!=='' && $val!==null) && is_numeric($val)) && true;
     }
-
 }

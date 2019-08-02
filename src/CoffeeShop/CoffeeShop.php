@@ -5,15 +5,13 @@ use base\Location;
 class CoffeeShop extends Location implements IShop{
     private $__shopName;
 
-    public function __construct($xCoord, $yCoord, $shopName)
-    {
+    public function __construct($xCoord, $yCoord, $shopName) {
         parent::__construct($xCoord, $yCoord);
 
         $this->setShopName($shopName);
     }
     
-    public function getShopName() : string
-    {
+    public function getShopName() : string {
         return $this->__shopName;
     }
 

@@ -9,27 +9,25 @@ final class GetMyCoffee{
     private $__userLocation;
     private $__coffeeShops;
     
-    public function __construct($userXCoord, $userYCoord, $coffeeShopsCsv)
-    {
+    public function __construct($userXCoord, $userYCoord, $coffeeShopsCsv){
         $this->readShopsCsv($coffeeShopsCsv);
         $this->setUserLocationByCoords($userXCoord, $userYCoord);
         $this->process();
     }
 
-    public function readShopsCsv($coffeeShopsCsv){
+    private function readShopsCsv($coffeeShopsCsv){
         $shopsListObj = new ReadCoffeeShopList($coffeeShopsCsv);
         $this->__reader = $shopsListObj;
         return $this;
     }
 
-    public function setUserLocationByCoords($userXCoord, $userYCoord){
+    private function setUserLocationByCoords($userXCoord, $userYCoord){
         $userLocation = new Location($userXCoord, $userYCoord);
         $this->__userLocation = $userLocation;
         return $this;
     }
 
-    public function process(){
-        //get the list of shops objs
+    private function process(){
         $shopsList = $this->__reader->getList();
 
         $this->__coffeeShops = new CoffeeShopsArray($shopsList);

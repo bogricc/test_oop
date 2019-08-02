@@ -2,4 +2,5 @@
 vendor
 vendor/*
 composer.lock
-Dockerfile
+.vscode
+.vscode/*

@@ -6,8 +6,7 @@ class ReadCsvList{
     public $csvFile;
     public $csvList;
 
-    public function __construct($csvFile, $csvHeader = [])
-    {
+    public function __construct($csvFile, $csvHeader = []) {
         if(file_exists($csvFile)){
             $this->csvFile = $csvFile;
         }

@@ -61,7 +61,7 @@ To run all tests, please use this command:
 Where `tests` is folder where tests are defined.
 If you need to test only one test then you need to append the desired class.
 Example:
-```php -f vendor/bin/phpunit -- --bootstrap ./vendor/autoload.php --testdox tests/CoffeeShopDistanceTest```
+```php -f vendor/bin/phpunit -- --bootstrap ./vendor/autoload.php --testdox tests/CoffeeShopWithDistanceTest```
 
 
 ### Within a Docker container
@@ -107,5 +107,5 @@ or test a specified class
 ```
 docker run --rm -ti coffeeshop \
     bash -c "php -f vendor/phpunit/phpunit/phpunit -- \
-    --bootstrap vendor/autoload.php tests/CoffeeShopDistanceTest" 
+    --bootstrap vendor/autoload.php tests/CoffeeShopWithDistanceTest" 
 ```

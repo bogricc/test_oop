@@ -2,7 +2,7 @@
 namespace CoffeeShop;
 use base\ILocation;
 
-class CoffeeShopDistance extends CoffeeShop{
+class CoffeeShopWithDistance extends CoffeeShop{
     private $__distance;
 
     public function __construct($xCoord, $yCoord, $shopName, $distance = 0.0)
