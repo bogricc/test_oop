@@ -1,8 +1,8 @@
 <?php
 
 use CoffeeShop\ReadCoffeeShopList;
-use base\Location;
 use CoffeeShop\CoffeeShopsArray;
+use CoffeeShop\UserLocation;
 
 final class GetMyCoffee{
     private $__reader;
@@ -22,7 +22,7 @@ final class GetMyCoffee{
     }
 
     private function setUserLocationByCoords($userXCoord, $userYCoord){
-        $userLocation = new Location($userXCoord, $userYCoord);
+        $userLocation = new UserLocation($userXCoord, $userYCoord);
         $this->__userLocation = $userLocation;
         return $this;
     }
@@ -32,7 +32,7 @@ final class GetMyCoffee{
 
         $this->__coffeeShops = new CoffeeShopsArray($shopsList);
         foreach($this->__coffeeShops as $shop){
-            $shop->calcDistance($this->__userLocation);
+            $shop->setUserLocation($this->__userLocation);
         }
     }
 

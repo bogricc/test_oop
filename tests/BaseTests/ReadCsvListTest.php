@@ -4,7 +4,6 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use base\ReadCsvList;
 use base\BaseException;
-use CoffeeShop\CoffeeShopException;
 
 final class ReadCsvListTest extends TestCase {
 
@@ -24,8 +23,9 @@ final class ReadCsvListTest extends TestCase {
     }
     public function testThrowsExceptionWhenLoadingMalformedCsv(): void{
         $csvFile = "coffee_shops_bad.csv";
+        $csvHeader = ["Coordinate Y", "Coordinate X", "ShopName"];
         $this->expectException(BaseException::class);
-        new ReadCsvList($csvFile);
+        new ReadCsvList($csvFile, $csvHeader);
     }
 
     public function testCanSetIndexes(): void{

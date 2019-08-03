@@ -18,7 +18,7 @@ class ReadCoffeeShopList extends ReadCsvList{
         $list = [];
 
         $list = array_map(function($item){
-            return new CoffeeShopWithDistance($item['CoordinateX'], $item['CoordinateY'], $item['ShopName']);
+            return new CoffeeShopWithDistanceToUser($item['CoordinateX'], $item['CoordinateY'], $item['ShopName']);
         }, $this->csvList);
 
         return $list;

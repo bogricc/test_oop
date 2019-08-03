@@ -4,7 +4,7 @@ require "vendor/autoload.php";
 $usage = <<<USG
 Not enough parameters.
 call example: 
-php -f index.php 47.6 -122.4 coffee_shops.csv
+php -f index.php -- 47.6 -122.4 coffee_shops.csv
 USG;
 
 if($argc !== 4){
@@ -19,7 +19,6 @@ else{
         $coffeeArrived = $coffeeOptions->getNearShops();
         CoffeeShop\PrintMyCoffee::console($coffeeArrived);
     } catch(Exception $exceptionObject){
-        // echo "Error: {$exceptionObject->getMessage()}",PHP_EOL;
         echo $exceptionObject, PHP_EOL;
     }
 }
