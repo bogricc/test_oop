@@ -13,7 +13,9 @@ program to exit appropriately.
 
 Your program will be executed directly from the command line and will be provided three 
 arguments in the following order:
-`<user x coordinate> <user y coordinate> <shop data filename>`
+`<user x coordinate> <user y coordinate> <shop data url>`
+
+Notice that the data file will be read from an network location (ex: https://raw.githubusercontent.com/Agilefreaks/test_oop/master/coffee_shops.csv)
 
 ## Output
 
